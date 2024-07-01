@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Notes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .note { margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Easy Notes</h1>
+    <form id="noteForm">
+        <input type="text" id="noteTitle" placeholder="Title" required><br>
+        <textarea id="noteContent" placeholder="Your note..." required></textarea><br>
+        <button type="submit">Add Note</button>
+    </form>
+    <div id="notesContainer"></div>
+    <script>
+        const noteForm = document.getElementById('noteForm');
+        const notesContainer = document.getElementById('notesContainer');
+
+        noteForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('noteTitle').value;
+            const content = document.getElementById('noteContent').value;
+
+            const noteElement = document.createElement('div');
+            noteElement.className = 'note';
+            noteElement.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+
+            notesContainer.appendChild(noteElement);
+            noteForm.reset();
+        });
+    </script>
+</body>
+</html>
